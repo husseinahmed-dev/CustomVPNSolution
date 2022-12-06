@@ -63,7 +63,7 @@ will download and install aditional applications.
 • When everything is done, we will be brought to the prompt. To continue, please type
 the following.
 • sudo apt-get update && sudo apt-get install build-essential libssl-dev python-dev pythonvirtualenv python-pip python-setuptools git -y
-• git clone https://github.com/trailofbits/algo
+• git clone https://github.com/husseinahmed-dev/CustomVPNSolution
 Create a list of users by typing sudo vim config.cfg. This will launch the vim text editor.
 We can create new users by entering their names in the ”users” section. If we plan on using
 the VPN on more than one device or sharing it with others, it is a good idea to compile a
