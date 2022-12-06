@@ -3,27 +3,94 @@
 [![Twitter](https://img.shields.io/twitter/url/https/twitter.com/fold_left.svg?style=social&label=Follow%20%40AlgoVPN)](https://twitter.com/AlgoVPN)
 [![](https://github.com/trailofbits/algo/workflows/Main/badge.svg?branch=master)](https://github.com/trailofbits/algo/actions)
 
-Algo VPN is a set of Ansible scripts that simplify the setup of a personal WireGuard and IPsec VPN. It uses the most secure defaults available and works with common cloud providers. See our [release announcement](https://blog.trailofbits.com/2016/12/12/meet-algo-the-vpn-that-works/) for more information.
+4.1 Implement our own VPN in Cloud (AWS)
+With Internet service providers and government agencies closely monitoring user activity,
+online privacy has become an important issue of concern. To make matters worse, legislators
+are already working on data retention rules that would give ISPs the right to collect, keep,
+and sell your personal information to other parties. Since the entire privacy thing has come
+to light, many internet users have turned to virtual private networks (VPNs) in an effort to
+conceal their online identities. The good news is that it’s not hard to set up your own cloud
+VPN server at home and shield your data from prying eyes. Why make your own virtual
+private network?
+Building your own VPN may seem like a hard undertaking, but you do not need to be a
+oder to achieve it. You may need to learn some technical details, but the payoff is well worth
+the effort.
+• Cheap With Amazon Web Services (AWS), we may set up our own personal VPN at
+no cost for the first year. When compared to the cost of premium VPN services, the
+cost of using a hosting provider like Linode is far more reasonable.
+• Disposable VPN Our data will be sent from the Internet Service Provider to the cloud
+storage service. With a personal VPN, we may start up a brand-new VPN servver and
+establish a connection in a matter of minutes. At that point, we may terminate our
+instance it will be as if the VPN server never existed.
+77
+78 4.2. ALGO VPN
+• Increased personal discretion Our privacy will increase because of the disposable
+VPN. We may also be giving up our information to the VPN service that might sell
+it or share it with other parties. We still should not put all our faith in Amazon and
+the like when it comes to data privacy, but at least we know they will not give out our
+hosting information to spammers and ads.
+Setting up our own VPN in the cloud, though, will not let us get around geo-restrictions
+or censorship. However, if you have our own VPN, we can still encrypt and safeguard our
+data, which is more than enough for most of us. The fact that you will have control over
+our data and be able to delete it at whim is a huge plus (Timothy Joel Timothy, 2022).
+4.2 Algo VPN
+It is possible to build our own private network connection with the help of a number of
+different programs; nevertheless, Algo VPN is often considered to be the most reliable and
+user-friendly of them. It is a collection of scripts that let us establish a secure link to a remote
+server in the cloud. Algo VPN was built by the people at Trail of Bits, and it is supposed to
+be simple to use and at the same time giving maximum security. Algo’s ability to be used as
+a disposable VPN is a major plus. However, there are alternative choices available, such as
+Streisand, which offers a Tor bridge integration and other privacy-enhancing tools. For this
+project, we will nevertheless continue with Algo VPN since is largely recognized as the finest
+and most secure. We will also need a cloud server to set up our VPN on.
+Using Algo VPN, we will not have to worry about setting up an SSH connection to a
+server and running a series of convoluted command lines in order to install a VPN. Simply visit
+the site homepage and choose to Sign in into Amazon Web Services. Then go to Services
+->IAM. The Users menu will be located on the left side of the screen. Select to add a new
+user. Create a login name and check the box labeled ”Programmatic Access.” Choose to
+directly attach existing policies. To look for administration directives, enter that word. Go
+to ”Administrator Access” then proceed and download the CSV button found on the last
+screen. The file contains several numbers and access keys needed to start up Algo VPN. We
+may now proceed by selecting Close.
+All we need is access to the command line on our machine to install Algo. Windows users
+78
+CHAPTER 4. CUSTOM VPN SOLUTION ON AWS EC2 79
+will need the Windows Subsystem for Linux in order to make use of Algo.
+4.2.1 For Windows 10 users
+• The Settings menu is where we need to be.
+• Go to For Developers after updating and security.
+• Activate the Pgorammer Mode by clicking the button.
+• As soon as the last piece of software has been installed, go to the Control Panel and
+then the Programs menu.
+• Windows controls that can be toggled with a click.
+• The Windows Subsystem for Linux may be enabled by scrolling down and checking the
+box next to it; after that is done, click OK.
+• Following application installation, Windows will restart. The Linux Bash shell has been
+installed, and it can be accessed by typing ”Bash” in the search bar of the launcher.
+You only need to open it and respond to the few questions it asks. After that, Windows
+will download and install aditional applications.
+• When everything is done, we will be brought to the prompt. To continue, please type
+the following.
+• sudo apt-get update && sudo apt-get install build-essential libssl-dev python-dev pythonvirtualenv python-pip python-setuptools git -y
+• git clone https://github.com/trailofbits/algo
+Create a list of users by typing sudo vim config.cfg. This will launch the vim text editor.
+We can create new users by entering their names in the ”users” section. If we plan on using
+the VPN on more than one device or sharing it with others, it is a good idea to compile a
+list of everyone who needs access. Next, we will save our work and close the program. We
+will have to initiate a rollout. To get things rolling, just enter ./algo. A few questions will
+be posed to us. In the provider field, enter 2 for Amazon EC2. After that, give the virtual
+private network the desired naming we plan on deploying, and select a server in any country.
+79
+80 4.3. WIREGUARD
+In order to get the most out of the latency and VPN experience, it is best to choose a server
+that is near to us.
+Then, access the CSV file we obtained from Amazon Web Services and copy the AWS
+Access Key and AWS Secret Key. The next step Algo will demand is VPN on Demand. We
+can select this option if we want for the VPN to connect immediately. Then, we should put
+yes for the security upgrades questionnaire. The next step is for Algo set up itself on the
+cloud. It will notify us when processing is finished. The last step is to link our devices to the
+VPN connection (Timothy Joel Timothy, 2022).
 
-## Features
-
-* Supports only IKEv2 with strong crypto (AES-GCM, SHA2, and P-256) for iOS, macOS, and Linux
-* Supports [WireGuard](https://www.wireguard.com/) for all of the above, in addition to Android and Windows 10
-* Generates .conf files and QR codes for iOS, macOS, Android, and Windows WireGuard clients
-* Generates Apple profiles to auto-configure iOS and macOS devices for IPsec - no client software required
-* Includes a helper script to add and remove users
-* Blocks ads with a local DNS resolver (optional)
-* Sets up limited SSH users for tunneling traffic (optional)
-* Based on current versions of Ubuntu and strongSwan
-* Installs to DigitalOcean, Amazon Lightsail, Amazon EC2, Vultr, Microsoft Azure, Google Compute Engine, Scaleway, OpenStack, CloudStack, Hetzner Cloud, Linode, or [your own Ubuntu server (for more advanced users)](docs/deploy-to-ubuntu.md)
-
-## Anti-features
-
-* Does not support legacy cipher suites or protocols like L2TP, IKEv1, or RSA
-* Does not install Tor, OpenVPN, or other risky servers
-* Does not depend on the security of [TLS](https://tools.ietf.org/html/rfc7457)
-* Does not claim to provide anonymity or censorship avoidance
-* Does not claim to protect you from the [FSB](https://en.wikipedia.org/wiki/Federal_Security_Service), [MSS](https://en.wikipedia.org/wiki/Ministry_of_State_Security_(China)), [DGSE](https://en.wikipedia.org/wiki/Directorate-General_for_External_Security), or [FSM](https://en.wikipedia.org/wiki/Flying_Spaghetti_Monster)
 
 ## Deploy the Algo Server
 
