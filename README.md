@@ -3,7 +3,7 @@
 [![Twitter](https://img.shields.io/twitter/url/https/twitter.com/fold_left.svg?style=social&label=Follow%20%40AlgoVPN)](https://twitter.com/AlgoVPN)
 [![](https://github.com/trailofbits/algo/workflows/Main/badge.svg?branch=master)](https://github.com/trailofbits/algo/actions)
 
-4.1 Implement our own VPN in Cloud (AWS)
+## Implement our own VPN in Cloud (AWS)
 With Internet service providers and government agencies closely monitoring user activity,
 online privacy has become an important issue of concern. To make matters worse, legislators
 are already working on data retention rules that would give ISPs the right to collect, keep,
@@ -22,18 +22,9 @@ cost of using a hosting provider like Linode is far more reasonable.
 storage service. With a personal VPN, we may start up a brand-new VPN servver and
 establish a connection in a matter of minutes. At that point, we may terminate our
 instance it will be as if the VPN server never existed.
-77
-78 4.2. ALGO VPN
-• Increased personal discretion Our privacy will increase because of the disposable
-VPN. We may also be giving up our information to the VPN service that might sell
-it or share it with other parties. We still should not put all our faith in Amazon and
-the like when it comes to data privacy, but at least we know they will not give out our
-hosting information to spammers and ads.
-Setting up our own VPN in the cloud, though, will not let us get around geo-restrictions
-or censorship. However, if you have our own VPN, we can still encrypt and safeguard our
-data, which is more than enough for most of us. The fact that you will have control over
-our data and be able to delete it at whim is a huge plus (Timothy Joel Timothy, 2022).
-4.2 Algo VPN
+
+
+## Algo VPN
 It is possible to build our own private network connection with the help of a number of
 different programs; nevertheless, Algo VPN is often considered to be the most reliable and
 user-friendly of them. It is a collection of scripts that let us establish a secure link to a remote
@@ -53,8 +44,8 @@ to ”Administrator Access” then proceed and download the CSV button found on 
 screen. The file contains several numbers and access keys needed to start up Algo VPN. We
 may now proceed by selecting Close.
 All we need is access to the command line on our machine to install Algo. Windows users
-78
-CHAPTER 4. CUSTOM VPN SOLUTION ON AWS EC2 79
+
+## CUSTOM VPN SOLUTION ON AWS EC2
 will need the Windows Subsystem for Linux in order to make use of Algo.
 4.2.1 For Windows 10 users
 • The Settings menu is where we need to be.
@@ -80,8 +71,8 @@ list of everyone who needs access. Next, we will save our work and close the pro
 will have to initiate a rollout. To get things rolling, just enter ./algo. A few questions will
 be posed to us. In the provider field, enter 2 for Amazon EC2. After that, give the virtual
 private network the desired naming we plan on deploying, and select a server in any country.
-79
-80 4.3. WIREGUARD
+
+## WIREGUARD
 In order to get the most out of the latency and VPN experience, it is best to choose a server
 that is near to us.
 Then, access the CSV file we obtained from Amazon Web Services and copy the AWS
